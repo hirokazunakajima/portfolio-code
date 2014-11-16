@@ -1,0 +1,1151 @@
+
+
+/**********************************************************
+
+  Property For SCSS ( declare Responsive for fit every size devises)
+
+***********************************************************/
+
+$mobile: 400px;
+$tablet: 768px;
+$viewWorkBtn: 820px;
+$desktop: 960px;
+$process: 650px;
+$overDesktop: 1280px;
+
+@mixin responsive($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $mobile) {
+      @content;
+    }
+  } @else if $media == phablet {
+    @media only screen and (min-width: $mobile + 1) and (max-width: $tablet - 1) {
+      @content;
+    }
+  } @else if $media == tablet {
+    @media only screen and (min-width: $tablet) and (max-width: $desktop - 1) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media only screen and (min-width: $desktop) {
+      @content;
+    }
+  } @else if $media == process {
+    @media only screen and (max-width: $process) {
+      @content;
+    }
+  } @else if $media == removeViewWorkBtn {
+    @media only screen and (max-width: $viewWorkBtn) {
+      @content;
+    }
+  } @else if $media == overDesktop {
+    @media only screen and (min-width: $overDesktop) {
+      @content;
+    }
+  }
+}
+
+
+/*************************************
+
+  Property For SCSS ( background gradation )
+
+**************************************/
+
+@mixin blueGraduation() {
+  background: #dee6ed;
+  background: -moz-linear-gradient(top, #dee6ed 0%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dee6ed), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(top, #dee6ed 0%, #ffffff 100%);
+  background: -o-linear-gradient(top, #dee6ed 0%, #ffffff 100%);
+  background: -ms-linear-gradient(top, #dee6ed 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #dee6ed 0%, #ffffff 100%);
+
+}
+
+@mixin blackGraduation() {
+  background: #1e1e1e;
+  background: -moz-linear-gradient(top, #1e1e1e 0%, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e1e1e), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, #1e1e1e 0%, #000000 100%);
+  background: -o-linear-gradient(top, #1e1e1e 0%, #000000 100%);
+  background: -ms-linear-gradient(top, #1e1e1e 0%, #000000 100%);
+  background: linear-gradient(to bottom, #1e1e1e 0%, #000000 100%);
+
+}
+
+/**********************************************************
+
+  Property For SCSS ( Create animation CSS with vendor prefix )
+
+***********************************************************/
+
+
+@mixin animation($animate, $time) {
+  -webkit-animation: $animate $time;
+  -moz-animation: $animate $time;
+  -o-animation: $animate $time;
+  animation: $animate $time;
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+/*************************************
+
+  Property For SCSS (tagline animation )
+
+**************************************/
+
+$headlineTime: .6s;
+$headlineOffset: -20%;
+
+.fadeInDown {
+  @include animation(AnimationFadeInDown, $headlineTime);
+}
+
+.fadeOutUp {
+  @include animation(AnimationFadeOutUp, $headlineTime);
+}
+
+.fadeOutUpQuick {
+  opacity: 0;
+  -webkit-transform: translate3d(0, $headlineOffset, 0);
+  -moz-transform: translate3d(0, $headlineOffset, 0);
+  -ms-transform: translate3d(0, $headlineOffset, 0);
+  -o-transform: translate3d(0, $headlineOffset, 0);
+  transform: translate3d(0, $headlineOffset, 0);
+}
+
+
+/********************************************************
+
+  Property For SCSS ( Animation for each section title )
+
+*********************************************************/
+
+$animationTime: 0.2s;
+$inColor: #111;
+$outColor: #ddd;
+$inSize: 2.3em;
+$outSize: 2.1em;
+
+@include keyframes(AnimationIn) {
+
+  0% {
+    color: $outColor;
+    font-size: $outSize;
+  }
+  100% {
+    color: $inColor;
+    font-size: $inSize;
+  }
+}
+
+@include keyframes(AnimationOut) {
+  0% {
+    color: $inColor;
+    font-size: $inSize;
+  }
+  100% {
+    color: $outColor;
+    font-size: $outSize;
+  }
+}
+
+
+@include keyframes(AnimationFadeInDown) {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, $headlineOffset, 0);
+    -moz-transform: translate3d(0, $headlineOffset, 0);
+    -ms-transform: translate3d(0, $headlineOffset, 0);
+    -o-transform: translate3d(0, $headlineOffset, 0);
+    transform: translate3d(0, $headlineOffset, 0);
+
+    -webkit-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    -moz-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    -ms-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    -o-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@include keyframes(AnimationFadeOutUp) {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    -webkit-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    -moz-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    -ms-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    -o-transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+    transition-timing-function: cubic-bezier(0, 0.480, 0.420, 1);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, $headlineOffset, 0);
+    -moz-transform: translate3d(0, $headlineOffset, 0);
+    -ms-transform: translate3d(0, $headlineOffset, 0);
+    -o-transform: translate3d(0, $headlineOffset, 0);
+    transform: translate3d(0, $headlineOffset, 0);
+  }
+}
+
+
+/****************************************************
+*****************************************************
+
+  Start Styling
+
+*****************************************************
+*****************************************************/
+
+body {
+  font-size: 20px;
+  font-family: roboto, Verdana, Arial, sans-serif;
+  font-weight: 100;
+}
+
+#loader {
+  width: 70px;
+  height: 9px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -4px;
+  margin-left: -35px;
+  z-index: 20000;
+}
+
+#fade {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.container {
+
+  margin: 0 auto;
+  max-width: 51.4em; /* 1028px */
+
+  @include responsive(tablet) {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  @include responsive(desktop) {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+/*******************
+
+  Navigation Area
+
+********************/
+
+#navigation:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 3px;
+  width: 10000px;
+  border-top: 3px solid #fff;
+}
+
+#navigation {
+  position: fixed;
+  top: 0;
+  width: 330px;
+  padding: 0;
+  margin-top: 0;
+  z-index: 1000;
+
+  @include responsive(mobile) {
+    left: 50%;
+    margin-left: -165px;
+  }
+  @include responsive(phablet) {
+    left: 50%;
+    margin-left: -165px;
+  }
+  @include responsive(tablet) {
+    left: 100%;
+    margin-left: -330px;
+  }
+
+  @include responsive(desktop) {
+    left: 100%;
+    margin-left: -350px;
+  }
+
+  @include responsive(overDesktop) {
+    left: 100%;
+    margin-left: -380px;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  float: left;
+  width: 100px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.nav-list:first-child {
+  width: 30px;
+}
+
+.nav-list > a {
+  font-family: 'roboto slab', Verdana, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #000000;
+  text-decoration: none;
+  line-height: 2;
+  display: block;
+}
+
+/*******************************
+
+  Featured Area ( tagline area)
+
+********************************/
+
+.featured-wrapper {
+
+  margin-top: 3px;
+  background-image: url('../img/featured-bg.jpg');
+  background-repeat: no-repeat;
+  overflow: auto;
+
+  @include responsive(overDesktop) {
+    background-size: 100%;
+  }
+}
+
+.tagline-wrapper {
+
+  list-style: none;
+  padding-left: 0;
+  padding-top: 1em;
+  float: left;
+
+  @include responsive(tablet) {
+    padding-bottom: 0.3em;
+  }
+
+  @include responsive(removeViewWorkBtn) {
+    float: none;
+  }
+
+  @include responsive(desktop) {
+    float: left;
+    padding-bottom: 2em;
+  }
+}
+
+.tagline-list {
+  font-family: "Roboto slab", Helvetica, Verdana, Arial, sans-serif;
+  font-weight: 100;
+  color: #fff;
+  text-shadow: 3px 3px 2px #444;
+
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+
+  @include responsive(removeViewWorkBtn) {
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  @include responsive(mobile) {
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+  @include responsive(tablet) {
+    font-size: 2em;
+  }
+
+  @include responsive(desktop) {
+    font-size: 2.45em;
+  }
+}
+
+.tagline-list:last-child {
+  margin-bottom: 1em;
+}
+
+#take-action-btn {
+
+  display: block;
+  max-height: 144px;
+
+  @include responsive(removeViewWorkBtn) {
+    display: none;
+  }
+
+  @include responsive(tablet) {
+    padding-top: 4em;
+    width: 160px;
+    float: right;
+  }
+
+  @include responsive(desktop) {
+    padding-top: 4em;
+    float: right;
+  }
+}
+
+
+/***************************
+
+  Content Common Base Style
+
+****************************/
+
+.about-wrapper,
+.work-wrapper,
+.contact-wrapper {
+  padding-top: 6em;
+}
+
+.about-wrapper,
+.work-wrapper {
+
+  width: 98%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @include responsive(mobile) {
+    width: 100%;
+  }
+
+  .container {
+
+    @include responsive(phablet) {
+      width: 95%;
+    }
+    @include responsive(tablet) {
+      width: 90%;
+    }
+
+    @include responsive(desktop) {
+      max-width: 990px;
+    }
+  }
+}
+
+.section-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 2.5em;
+  line-height: 2em;
+  width: 350px;
+  text-align: center;
+  background-color: #fff;
+  margin: 0 auto 1em -175px;
+  z-index: 0;
+  color: #ccc;
+  font-family: 'roboto slab', Verdana, Arial, sans-serif;
+  font-weight: 400;
+
+}
+
+.section-title:before {
+  content: '';
+  height: 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -15px;
+  z-index: -10;
+  border: 15px solid transparent;
+  border-top: 2em solid #fff;
+  border-bottom: 0 solid transparent;
+
+}
+
+/*******************
+
+  About Area Style
+
+********************/
+
+.about-wrapper {
+
+  @include blueGraduation();
+
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: 1em;
+
+  @include responsive(mobile) {
+    margin-top: 0;
+  }
+  @include responsive(phablet) {
+    margin-top: 0;
+  }
+
+}
+
+.about-desc-intro {
+  float: left;
+  width: 70%;
+
+  line-height: 1.2em;
+  font-weight: 300;
+  font-size: 1.3em;
+
+  @include responsive(mobile) {
+
+    font-size: 0.9em;
+    font-weight: 300;
+    width: 95%;
+    float: none;
+    margin: 0 auto;
+  }
+
+  @include responsive(phablet) {
+    font-size: 1em;
+    font-weight: 300;
+    width: 95%;
+    float: none;
+    margin: 0 auto;
+  }
+
+  @include responsive(tablet) {
+    font-size: 1.1em;
+  }
+
+}
+
+.drop-cap {
+  font-family: 'roboto slab', Helvetica, Verdana, Arial, sans-serif;
+  font-weight: 700;
+  float: left;
+  font-size: 2.8em;
+  line-height: 0.6;
+  padding-top: 8px;
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.about-img-wrapper {
+
+  float: right;
+  width: 30%;
+  text-align: center;
+
+  img {
+    width: 65%;
+  }
+
+  @include responsive(mobile) {
+    display: none;
+  }
+
+  @include responsive(phablet) {
+    display: none;
+  }
+  @include responsive(tablet) {
+    padding-top: 1em;
+  }
+
+  @include responsive(desktop) {
+    padding-top: 1em;
+  }
+}
+
+.about-process-wrapper {
+
+  float: left;
+  margin-top: 1em;
+  padding: 0;
+  font-weight: 300;
+  border-top: 1px solid #cfcfcf;
+
+}
+
+.process-title {
+  font-family: 'roboto slab', Helvetica, Verdana, Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 1.3em;
+}
+
+.process-list {
+  font-size: 0.9em;
+  float: left;
+  display: block;
+  width: 33.3333%;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  box-sizing: border-box;
+
+  @include responsive(process) {
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/*******************
+
+  Work Area Style
+
+********************/
+
+.work-wrapper {
+
+  position: relative;
+  top: 0;
+  left: 0;
+
+  @include blueGraduation();
+
+  margin-top: 1em;
+
+  @include responsive(desktop) {
+    margin-top: 2em;
+  }
+  @include responsive(overDesktop) {
+    margin-top: 2em;
+  }
+
+  .container {
+
+    padding-top: 2em;
+
+  }
+
+}
+
+.work-each-wrapper {
+
+  margin-bottom: 3em;
+  position: relative;
+
+}
+
+.work-each-title {
+  margin: 0;
+  font-family: 'Roboto slab', Helvetica, Verdana, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+  color: #333;
+  line-height: 1;
+  text-shadow: 3px 3px 2px #fff;
+
+}
+
+.work-each-desc {
+  font-family: Roboto, Helvetica, Verdana, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.8em;
+  line-height: 1.4;
+  color: #444;
+
+}
+
+.work-desc-wrapper {
+
+  @include responsive(mobile) {
+    width: 100%;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    box-sizing: border-box;
+  }
+  @include responsive(phablet) {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  @include responsive(tablet) {
+    width: 40%;
+    float: left;
+    padding-right: 1em;
+    box-sizing: border-box;
+  }
+
+  @include responsive(desktop) {
+    width: 40%;
+    float: left;
+    padding-right: 1em;
+    box-sizing: border-box;
+  }
+}
+
+.view-project {
+  font-size: 0.8em;
+  width: 100px;
+  color: #333;
+  display: block;
+}
+
+.work-tags {
+  background: #333;
+  font-size: 0.7em;
+  line-height: 1;
+  color: #fff;
+  padding: 0.2em 0.7em;
+  display: inline;
+
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+
+  behavior: url(PIE.htc);
+
+}
+
+.work-tag-wrapper {
+
+  padding: 0;
+  list-style: none;
+
+  @include responsive(phablet) {
+    float: left;
+  }
+}
+
+.slide-btn-wrapper {
+
+  padding: 0;
+  list-style: none;
+  @include responsive(mobile) {
+    display: block;
+    margin: 0;
+    text-align: center;
+  }
+  @include responsive(phablet) {
+    float: right;
+  }
+  @include responsive(tablet) {
+    float: left;
+  }
+
+  @include responsive(desktop) {
+    float: left;
+  }
+
+}
+
+.slide-btn-wrapper > li {
+  display: inline;
+  @include responsive(mobile) {
+    display: inline-block;
+  }
+
+}
+
+.slide-btn {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  float: left;
+  margin-left: 2px;
+  border-bottom: 2px solid #000;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include responsive(mobile) {
+    margin-bottom: 0.5em;
+    width: 40px;
+    margin-left: -2px;
+  }
+  @include responsive(phablet) {
+    width: 30px;
+  }
+}
+
+.slide-btn-active {
+  border-bottom: 2px solid blue;
+}
+
+.pagenation {
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 0.8em;
+
+  @include responsive(mobile) {
+    display: none;
+  }
+  @include responsive(phablet) {
+    padding-top: 0.3em;
+    float: right;
+  }
+  @include responsive(tablet) {
+    padding-top: 0.3em;
+    float: left;
+  }
+
+  @include responsive(desktop) {
+    padding-top: 0.3em;
+    float: left;
+  }
+}
+
+.work-img {
+  @include responsive(mobile) {
+    width: 100%;
+  }
+  @include responsive(phablet) {
+    width: 100%;
+  }
+  @include responsive(tablet) {
+    width: 100%;
+  }
+}
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  border: 4px solid #aaa;
+  border-bottom: none;
+  background: #aaa;
+
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  @include responsive(mobile) {
+    width: 100%;
+  }
+  @include responsive(phablet) {
+    width: 100%;
+  }
+  @include responsive(tablet) {
+    width: 59.1%;
+  }
+  @include responsive(desktop) {
+    width: 59.1%;
+  }
+
+}
+
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+
+}
+
+.swipe-wrap > div {
+  float: left;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+}
+
+.video-tag-wrapper {
+  @include responsive(phablet) {
+    float: none;
+  }
+}
+
+#video-wrapper {
+  position: relative;
+  padding-bottom: 30.25%;
+  padding-top: 25px;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+  border: 4px solid #aaa;
+  background: #ffffff;
+
+  @include responsive(mobile) {
+    padding-bottom: 52.25%;
+    padding-top: 15px;
+  }
+  @include responsive(phablet) {
+    padding-bottom: 52.25%;
+    padding-top: 17px;
+  }
+  @include responsive(desktop) {
+    width: 58.2%
+  }
+  @include responsive(overDesktop) {
+    width: 58.2%;
+  }
+}
+
+#video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#video-img {
+  width: 100%;
+  margin-top: -20px;
+}
+
+/*******************
+
+  Contact Area Style
+
+********************/
+
+.contact-wrapper {
+
+  @include blackGraduation();
+
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .container {
+    width: 70%;
+    @include responsive(mobile) {
+      padding-left: 5px;
+      padding-right: 5px;
+      box-sizing: border-box;
+      width: 90%;
+    }
+    @include responsive(phablet) {
+      width: 80%;
+    }
+    @include responsive(tablet) {
+      width: 70%;
+    }
+
+    @include responsive(desktop) {
+      max-width: 600px;
+    }
+  }
+}
+
+.icon-wrapper {
+  text-align: center;
+}
+
+.skill-icon {
+  margin: 0 5px 0 5px;
+  width: 44px;
+  height: 44px;
+}
+
+.contact-tagline {
+  margin-top: 0.5em;
+  font-size: 1.2em;
+  font-weight: 300;
+  color: #ddd;
+  padding: 5px;
+  text-align: center;
+
+  @include responsive(mobile) {
+    font-size: 1em;
+  }
+  @include responsive(phablet) {
+    font-size: 1em;
+  }
+}
+
+.contact-field-title {
+
+  margin: 0.8em auto 0 auto;
+  text-align: center;
+  color: #fff;
+  padding: 0.5em 0 0 0;
+  font-size: 0.8em;
+  font-weight: 300;
+
+}
+
+.name-field,
+.email-field {
+
+  font-family: 'open sans', Verdana, Arial, sans-serif;
+  font-size: 0.8em;
+  color: #fff;
+  margin: 0 auto;
+  padding: 8px;
+  width: 100%;
+  display: block;
+  overflow: auto;
+  background-color: #333;
+  border: 2px solid #111;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;/* remove default browser focus */
+    border: 2px solid #fff;
+  }
+}
+
+.message-field {
+  font-family: 'open sans', Verdana, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 0.8em;
+  color: #fff;
+  padding: 8px;
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  min-height: 200px;
+  overflow: auto;
+  background-color: #333;
+  border: 2px solid #111;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border: 2px solid #fff;
+  }
+
+}
+
+#submit-btn {
+
+  display: block;
+  text-align: center;
+  margin: 1em auto 2em auto;
+  width: 7.8em;
+  height: 4.5em;
+  background: #00ad4b;
+  font-family: roboto, Verdana, Arial, sans-serif;
+  line-height: 4.5em;
+  font-size: 1.15em;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include responsive(mobile) {
+    line-height: 3.5em;
+    width: 6.5em;
+    height: 3.6em;
+  }
+
+  @include responsive(phablet) {
+    line-height: 4em;
+    width: 7em;
+    height: 4em;
+  }
+
+}
+
+.greenMessage,
+.redMessage {
+  font-size: 0.8em;
+  margin-top: 0.1em;
+  padding: 0.2em;
+  font-weight: 300;
+  text-align: center;
+  display: none;
+}
+
+.greenMessage {
+  color: #fff;
+  background: #00ad4b;
+}
+
+.redMessage {
+  color: #fff;
+  background: #ff5044;
+}
+
+
+/*******************
+
+  Utilities
+
+********************/
+
+.cf:before, .cf:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.cf:after {
+  clear: both;
+}
+.cf {
+  zoom: 1;
+}
+
+/*******************
+
+  Utilities for Animation
+  This has to be bottom because this class will override ".section-title" class using Javascript
+
+********************/
+
+.in {
+  color: $inColor;
+  font-size: $inSize;
+  @include animation(AnimationIn, $animationTime);
+}
+
+.out {
+  color: $outColor;
+  font-size: $outSize;
+  @include animation(AnimationOut, $animationTime);
+}
+
+// this is used in mobile
+.inQuick {
+  color: $inColor;
+  font-size: $inSize;
+}
+
+.outQuick {
+  color: $outColor;
+  font-size: $outSize;
+}
+
+
