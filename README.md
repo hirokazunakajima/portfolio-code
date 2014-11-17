@@ -1,6 +1,9 @@
 # My Portfolio pure code
 ===================
 
+### Where is it?
+
+ * Go to <a href="http://hirokazunakajima.com" target="_brank">hirokazunakajima.com</a>
 
 ### What is it working in behind?
 
